@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 from sklearn.neural_network import MLPRegressor
 
 print('Carregando Arquivo de teste')
-arquivo = np.load('teste2.npy')
+arquivo = np.load('teste5.npy')
 x = arquivo[0]
 y = np.ravel(arquivo[1])
 
@@ -11,8 +11,8 @@ minErrors = []
 
 data = {}
 
-for i in range(5):
-    regr = MLPRegressor(hidden_layer_sizes=(80),
+for i in range(10):
+    regr = MLPRegressor(hidden_layer_sizes=(1000,150),
                         max_iter=100000,
                         activation='logistic', #{'identity', 'logistic', 'tanh', 'relu'},
                         solver='adam',
@@ -52,9 +52,5 @@ plt.plot(x,y_est,linewidth=2)
 
 plt.show()
 
-
-# print(minErrors)
-# print(data.keys())
-# print(min(data.keys()))
 print("Média do erro: " + str(round(np.average(minErrors),2)))
 print("Desvio padrão do erro: " + str(round(np.std(minErrors),5)))
